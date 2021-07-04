@@ -11,14 +11,13 @@
         <img src="assets/images/avatar.jpg">
     </ion-avatar>
 
-    <h2>{{ nome_Usuario }}</h2><br/>
+    <h2>{{ feed_content.name }}</h2><br/>
 
     
   </ion-item>
 
   <ion-card-content>
-    Keep close to Nature's heart... and break clear away, once in awhile,
-    and climb a mountain or spend a week in the woods. Wash your spirit clean.
+    {{ feed_content.text }}
   </ion-card-content>
 </ion-card>
 

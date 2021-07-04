@@ -9,6 +9,11 @@ import { Component, OnInit } from '@angular/core';
 
 
 export class FeedPage implements OnInit {
+  public feed_content ={
+      name: "Renan Oliveira Dynamic",
+      text: "Random mussumsis ipsunsis cacildis da me um copo de cachacis"
+
+  }
   public nome_Usuario:string = "Renan Oliveira";
   constructor() { }
 
@@ -20,7 +25,7 @@ export class FeedPage implements OnInit {
 	
   }
   ionViewDidEnter(){
-	this.somaDoisNumeros(10, 99);
+	//this.somaDoisNumeros(10, 99);
   }
 
 }
