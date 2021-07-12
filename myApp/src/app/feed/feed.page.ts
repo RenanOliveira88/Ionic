@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HTTP } from '@ionic-native/http/ngx';
+
 
 @Component({
   selector: 'app-feed',
@@ -15,7 +17,7 @@ export class FeedPage implements OnInit {
 
   }
   public nome_Usuario:string = "Renan Oliveira";
-  constructor() { }
+  constructor(private http: HTTP) {}
 
   public somaDoisNumeros(num1:number, num2:number): void{
 	alert(num1 + num2);
@@ -26,6 +28,22 @@ export class FeedPage implements OnInit {
   }
   ionViewDidEnter(){
 	//this.somaDoisNumeros(10, 99);
+
+    this.http.get('http://ionic.io', {}, {})
+    .then(data => {
+      alert('deu certo')
+      console.log(data.status);
+      console.log(data.data); // data received by server
+      console.log(data.headers);
+
+    })
+    .catch(error => {
+      alert('erro');
+      console.log(error.status);
+      console.log(error.error); // error message as string
+      console.log(error.headers);
+
+    });
   }
 
 }
