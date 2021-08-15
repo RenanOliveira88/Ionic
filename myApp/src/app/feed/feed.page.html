@@ -5,13 +5,13 @@
 </ion-header>
 
 <ion-content padding>
-<ion-card>
+<ion-card *ngFor="let filme of filmes">
   <ion-item>
     <ion-avatar item-start>
-        <img src="assets/images/avatar.jpg">
+        <img [src]="'https://image.tmdb.org/t/p/w500/' + filme.backdrop_path">
     </ion-avatar>
 
-    <h2>{{ feed_content.name }}</h2><br/>
+    <h2>{{ filme.original_title }}</h2><br/>
 
     
   </ion-item>

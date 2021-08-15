@@ -16,6 +16,10 @@ export class FeedPage implements OnInit {
       text: "Random mussumsis ipsunsis cacildis da me um copo de cachacis"
 
   }
+  public raiz:string = "https://api.themoviedb.org/";
+  public selecao:string = "3/discover/movie";
+  public chave:string = "COLOQUE SUA CHAVE AQUI";
+  public filmes = new Array<any>();
   public nome_Usuario:string = "Renan Oliveira";
   constructor(private http: HTTP) {}
 
@@ -29,16 +33,19 @@ export class FeedPage implements OnInit {
   ionViewDidEnter(){
 	//this.somaDoisNumeros(10, 99);
 
-    this.http.get('http://ionic.io', {}, {})
+    this.getPopularMovies()
     .then(data => {
-      alert('deu certo')
+      const response = (data.data as any);
+      const objeto_retorno = JSON.parse(response);
+      this.filmes = objeto_retorno.results;
+
       console.log(data.status);
       console.log(data.data); // data received by server
       console.log(data.headers);
 
     })
     .catch(error => {
-      alert('erro');
+
       console.log(error.status);
       console.log(error.error); // error message as string
       console.log(error.headers);
@@ -46,4 +53,10 @@ export class FeedPage implements OnInit {
     });
   }
 
+  getPopularMovies(){
+    return this.http.get(this.getEndereco(),{},{});
+  }
+  getEndereco(){
+    return this.raiz + this.selecao + this.chave;
+  }
 }
